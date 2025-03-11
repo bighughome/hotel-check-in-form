@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Check-In Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+        .required {
+            color: red;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .checkbox-group, .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .checkbox-group label, .radio-group label {
+            display: flex;
+            align-items: center;
+            gap: 8px; /* Ensures spacing between radio button and text */
+            font-weight: normal;
+        }
+        .radio-group input, .checkbox-group input {
+            margin: 0;
+            width: auto; /* Ensures the buttons don't stretch */
+        }
+        .radio-group .other-input,
+        .checkbox-group .other-input {
+            flex: 1;
+            margin-left: 10px;
+        }
+        .hidden {
+            display: none;
+        }
+        .margin-top {
+            margin-top: 20px; /* Adds space when field is visible */
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+            margin-top: 20px; /* Space above the button */
+        }
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Hotel Check-In Form</h2>
+    <p>This form helps in smooth check-in service.</p>
+
+    <form id="checkInForm">
+        <div class="question">
+            <label>Name <span class="required">*</span></label>
+            <input type="text" id="name" required>
+        </div>
+
+        <div class="question">
+            <label>Passport Number <span class="required">*</span></label>
+            <input type="text" id="passport" required>
+        </div>
+
+        <div class="question">
+            <label>Country of Residence <span class="required">*</span></label>
+            <select id="country" required>
+                <option value="">Select Country</option>
+            </select>
+        </div>
+
+        <div class="question">
+            <label>Purpose of Visit <span class="required">*</span></label>
+            <div class="radio-group">
+                <label><input type="radio" name="purpose" value="Business" required> Business</label>
+                <label><input type="radio" name="purpose" value="Vacation with Friends"> Vacation with Friends</label>
+                <label><input type="radio" name="purpose" value="Family Vacation"> Family Vacation</label>
+                <label><input type="radio" name="purpose" value="Holiday with Spouse/Partner"> Holiday with Spouse/Partner</label>
+                <label>
+                    <input type="radio" name="purpose" id="otherPurposeRadio">
+                    <span>Other:</span>
+                    <input type="text" id="otherPurpose" class="other-input">
+                </label>
+            </div>
+        </div>
+
+        <div class="question">
+            <label>No. of Guests (including you) <span class="required">*</span></label>
+            <input type="number" id="guests" min="1" required>
+        </div>
+
+        <div class="question">
+            <label>No. of Nights Stay <span class="required">*</span></label>
+            <input type="number" id="nights" min="1" required>
+        </div>
+
+        <div class="question">
+            <label>Room No.</label>
+            <input type="text" id="roomNo">
+        </div>
+
+        <div class="question">
+            <label>What facilities are most important to you? (Select all that apply) <span class="required">*</span></label>
+            <div class="checkbox-group">
+                <label><input type="checkbox" name="facilities" value="Wi-Fi"> Wi-Fi</label>
+                <label><input type="checkbox" name="facilities" value="Room Service"> Room Service</label>
+                <label><input type="checkbox" name="facilities" value="Quiet & Peaceful Environment"> Quiet & Peaceful Environment</label>
+                <label><input type="checkbox" name="facilities" value="Scenic Location"> Scenic Location (Near Nature)</label>
+                <label><input type="checkbox" name="facilities" value="Dining"> Dining</label>
+                <label><input type="checkbox" name="facilities" value="Air Condition (AC)"> Air Condition (AC)</label>
+                <label><input type="checkbox" name="facilities" value="Mattress Quality"> Mattress Quality</label>
+                <label>
+                    <input type="checkbox" id="otherFacilitiesCheck">
+                    <span>Other:</span>
+                    <input type="text" id="otherFacilities" class="other-input">
+                </label>
+            </div>
+        </div>
+
+        <div class="question">
+            <label>Which factors influenced your choice to book with us? (Select all that apply) <span class="required">*</span></label>
+            <div class="checkbox-group">
+                <label><input type="checkbox" name="factors" value="Price"> Price</label>
+                <label><input type="checkbox" name="factors" value="Location"> Location</label>
+                <label><input type="checkbox" name="factors" value="Reviews"> Reviews</label>
+                <label><input type="checkbox" name="factors" value="Amenities"> Amenities</label>
+                <label><input type="checkbox" name="factors" value="Recommendation from friends/family"> Recommendation from friends/family</label>
+                <label>
+                    <input type="checkbox" id="otherFactorsCheck">
+                    <span>Other:</span>
+                    <input type="text" id="otherFactors" class="other-input">
+                </label>
+            </div>
+        </div>
+
+        <div class="question">
+            <label>How did you book your stay? <span class="required">*</span></label>
+            <div class="radio-group">
+                <label><input type="radio" name="bookingMethod" value="Online travel agency" required> Online travel agency (e.g., Booking.com, Expedia)</label>
+                <label><input type="radio" name="bookingMethod" value="Travel agent"> Travel agent</label>
+                <label><input type="radio" name="bookingMethod" value="Walk-in booking"> Walk-in booking</label>
+                <label><input type="radio" name="bookingMethod" value="Directly through hotel website"> Directly through the hotel website</label>
+                <label>
+                    <input type="radio" name="bookingMethod" id="otherBookingCheck">
+                    <span>Other:</span>
+                    <input type="text" id="otherBooking" class="other-input">
+                </label>
+            </div>
+        </div>
+
+        <!-- New field for entering agency name -->
+        <div class="question hidden" id="agencyNameField">
+            <label>Enter Name of Online Travel Agency / Travel Agent:</label>
+            <input type="text" id="agencyName">
+        </div>
+
+        <div class="question hidden" id="agencyNameField">
+            <label>Agency Name:</label>
+            <input type="text" id="agencyName">
+        </div>
+
+        <p id="submittingMessage" style="display: none; text-align: center; color: #555;">Submitting...</p>
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        // Load countries from a text file
+        fetch("countries.txt")
+            .then(response => response.text())
+            .then(data => {
+                let countries = data.split("\n").map(country => country.trim()).filter(country => country);
+                let countrySelect = document.getElementById("country");
+                countries.forEach(country => {
+                    let option = document.createElement("option");
+                    option.value = country;
+                    option.textContent = country;
+                    countrySelect.appendChild(option);
+                });
+            });
+
+        // Show agency name field if Travel Agency/Agent is selected
+        document.querySelectorAll('input[name="bookingMethod"]').forEach(radio => {
+            radio.addEventListener("change", function() {
+                let agencyField = document.getElementById("agencyNameField");
+                if (this.value === "Online travel agency" || this.value === "Travel agent") {
+                    agencyField.classList.remove("hidden");
+                } else {
+                    agencyField.classList.add("hidden");
+                }
+            });
+        });
+
+        document.getElementById("checkInForm").addEventListener("submit", async function(event) {
+            event.preventDefault();
+
+            // Show the "Submitting..." message
+            const submittingMessage = document.getElementById("submittingMessage");
+            submittingMessage.style.display = "block";
+
+            let formData = {
+                name: document.getElementById("name").value,
+                passport: document.getElementById("passport").value,
+                country: document.getElementById("country").value,
+                purpose: document.querySelector('input[name="purpose"]:checked')?.value || "",
+                otherPurpose: document.getElementById("otherPurpose").value,
+                guests: document.getElementById("guests").value,
+                nights: document.getElementById("nights").value,
+                roomNo: document.getElementById("roomNo").value,
+                facilities: Array.from(document.querySelectorAll('input[name="facilities"]:checked')).map(input => input.value),
+                otherFacilities: document.getElementById("otherFacilities").value, 
+                factors: Array.from(document.querySelectorAll('input[name="factors"]:checked')).map(input => input.value),
+                otherFactors: document.getElementById("otherFactors").value,
+                bookingMethod: document.querySelector('input[name="bookingMethod"]:checked')?.value || "",
+                agencyName: document.getElementById("agencyName").value
+            };
+
+            try {
+                let response = await fetch("https://script.google.com/macros/s/AKfycbwQNkEZ7TZO0G5aZkn1AO_X6yQsuJiX1gGby4naJLn8spHGJrqngFiugmuv7OAUWNHrQw/exec", { // Replace with your script URL
+                    method: "POST",
+                    mode: "no-cors",  // Bypass CORS restriction
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(formData)
+                });
+
+                // Hide the "Submitting..." message
+                submittingMessage.style.display = "none";
+    
+                // Show success message
+                alert("Form submitted successfully!");
+
+            } catch (error) {
+                console.error("Error submitting form:", error);
+                alert("Failed to submit form.");
+            }
+        });
+
+    </script>
+
+</body>
+</html>
