@@ -81,6 +81,11 @@
 
     <form id="checkInForm">
         <div class="question">
+            <label>Room No.</label>
+            <input type="text" id="roomNo">
+        </div>
+        
+        <div class="question">
             <label>Name <span class="required">*</span></label>
             <input type="text" id="name" required>
         </div>
@@ -96,6 +101,16 @@
                 <option value="">Select Country</option>
             </select>
         </div>
+        
+        <div class="question">
+            <label>No. of Guests (including you) <span class="required">*</span></label>
+            <input type="number" id="guests" min="1" required>
+        </div>
+
+        <div class="question">
+            <label>No. of Nights Stay <span class="required">*</span></label>
+            <input type="number" id="nights" min="1" required>
+        </div>
 
         <div class="question">
             <label>Purpose of Visit <span class="required">*</span></label>
@@ -110,21 +125,6 @@
                     <input type="text" id="otherPurpose" class="other-input">
                 </label>
             </div>
-        </div>
-
-        <div class="question">
-            <label>No. of Guests (including you) <span class="required">*</span></label>
-            <input type="number" id="guests" min="1" required>
-        </div>
-
-        <div class="question">
-            <label>No. of Nights Stay <span class="required">*</span></label>
-            <input type="number" id="nights" min="1" required>
-        </div>
-
-        <div class="question">
-            <label>Room No.</label>
-            <input type="text" id="roomNo">
         </div>
 
         <div class="question">
